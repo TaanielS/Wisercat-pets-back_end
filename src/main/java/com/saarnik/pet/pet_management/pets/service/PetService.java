@@ -31,7 +31,7 @@ public class PetService {
         }
     }
 
-    public void addPet(PetDto petDto) {
+    public boolean addPet(PetDto petDto) {
         Pet pet = Pet.builder()
                 .code(petDto.getCode())
                 .name(petDto.getName())
@@ -39,7 +39,13 @@ public class PetService {
                 .furColor(petDto.getFurColor())
                 .country(petDto.getCountry())
                 .build();
-        petRepository.save(pet);
-        log.info("Pet {} is added to the database", pet.getCode());
+        try {
+            petRepository.save(pet);
+            log.info("Pet {} is added to the database", pet.getCode());
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
     }
 }

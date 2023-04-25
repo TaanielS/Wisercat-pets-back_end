@@ -18,6 +18,8 @@ import com.saarnik.pet.pet_management.pets.repository.PetRepository;
 import com.saarnik.pet.pet_management.pets.service.PetService;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8081")
@@ -34,10 +36,14 @@ public class PetController {
     }
 
     @PostMapping("/pets")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addPet(@RequestBody PetDto pedDto) {
-        System.out.println(pedDto);
-        petService.addPet(pedDto);
+    // @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<String> addPet(@RequestBody PetDto pedDto) {
+        boolean result = petService.addPet(pedDto);
+        if (result) {
+            return ResponseEntity.status(HttpStatus.CREATED).body("Pet added.");
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Constraint conflict.");
+        }
     }
 
 }
