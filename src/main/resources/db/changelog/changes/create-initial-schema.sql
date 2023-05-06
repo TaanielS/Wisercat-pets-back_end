@@ -9,3 +9,10 @@ CREATE TABLE pet (
   CONSTRAINT chk_furcolor CHECK (fur_color in ('Black', 'White', 'Brown', 'Yellow', 'Blue')),
   CONSTRAINT chk_country CHECK (country in ('Estonia', 'Latvia', 'Lithuania', 'Finland', 'Sweden', 'Norway'))
 );
+
+CREATE TABLE options (
+  id INTEGER PRIMARY KEY,
+  type VARCHAR(50),
+  fur_color VARCHAR(50),
+  country VARCHAR(50)
+);
