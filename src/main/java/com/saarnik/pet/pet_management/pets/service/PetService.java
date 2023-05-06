@@ -2,11 +2,7 @@ package com.saarnik.pet.pet_management.pets.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.saarnik.pet.pet_management.pets.dto.PetDto;
@@ -25,17 +21,18 @@ public class PetService {
         try {
             List<Pet> pets = new ArrayList<>();
             petRepository.findAll().forEach(pets::add);
+            log.info("Queried all pets.");
             return pets;
         } catch (Exception e) {
-            System.out.println(e);
-            return new ArrayList<>(null);
+            log.error("Error: {}.", e);
+            return new ArrayList<>();
         }
     }
 
     public boolean addPet(PetDto petDto) {
         // Check if we got no code for a pet or the code is already in use.
         if (petDto.getCode() == null || petRepository.findById(petDto.getCode()).isPresent()) {
-            System.out.println("pet exists");
+            log.info("No code for a pet or the code {} is already in use.", petDto.getCode());
             return false;
         }
         Pet newPet = Pet.builder()
@@ -47,10 +44,10 @@ public class PetService {
                 .build();
         try {
             petRepository.save(newPet);
-            log.info("Pet {} is added to the database", newPet.getCode());
+            log.info("Pet {} is added to the database.", newPet.getCode());
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+            log.error("Error: {}.", e);
             return false;
         }
     }
