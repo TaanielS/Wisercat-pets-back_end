@@ -2,6 +2,7 @@ package com.saarnik.pet.pet_management.pets.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,12 @@ public class PetService {
     }
 
     public boolean addPet(PetDto petDto) {
-        Pet pet = Pet.builder()
+        // Check if we got no code for a pet or the code is already in use.
+        if (petDto.getCode() == null || petRepository.findById(petDto.getCode()).isPresent()) {
+            System.out.println("pet exists");
+            return false;
+        }
+        Pet newPet = Pet.builder()
                 .code(petDto.getCode())
                 .name(petDto.getName())
                 .type(petDto.getType())
@@ -40,8 +46,8 @@ public class PetService {
                 .country(petDto.getCountry())
                 .build();
         try {
-            petRepository.save(pet);
-            log.info("Pet {} is added to the database", pet.getCode());
+            petRepository.save(newPet);
+            log.info("Pet {} is added to the database", newPet.getCode());
             return true;
         } catch (Exception e) {
             System.out.println(e);

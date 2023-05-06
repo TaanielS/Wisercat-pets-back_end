@@ -31,7 +31,7 @@ public class OptionService {
                 String text = option.getType();
                 String[] options = text.split(";");
                 return Arrays.asList(options);
-            } else if (select.equals("fur_color")) {
+            } else if (select.equals("furColor")) {
                 String text = option.getFurColor();
                 String[] options = text.split(";");
                 return Arrays.asList(options);

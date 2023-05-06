@@ -5,6 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Pattern.Flag;
 
 @Builder
 @Data
@@ -12,10 +16,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PetDto {
     @Id
+    @NotNull(message = "The code is required.")
     private Long code;
+    @NotBlank(message = "The name is required.")
     private String name;
+    @NotBlank(message = "The type is required.")
     private String type;
+    @NotBlank(message = "The fur color is required.")
     private String furColor;
+    @NotBlank(message = "The country is required.")
     private String country;
 
     public PetDto(long code) {

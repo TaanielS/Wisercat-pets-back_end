@@ -22,7 +22,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class PetController {
 
@@ -40,9 +40,9 @@ public class PetController {
     public ResponseEntity<String> addPet(@RequestBody PetDto pedDto) {
         boolean result = petService.addPet(pedDto);
         if (result) {
-            return ResponseEntity.status(HttpStatus.CREATED).body("Pet added.");
+            return ResponseEntity.status(HttpStatus.CREATED).body("Pet is added.");
         } else {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Constraint conflict.");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Constraint conflict.");
         }
     }
 
