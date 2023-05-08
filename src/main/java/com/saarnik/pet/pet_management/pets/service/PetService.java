@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.saarnik.pet.pet_management.pets.dto.EditPetDto;
 import com.saarnik.pet.pet_management.pets.dto.PetDto;
 import com.saarnik.pet.pet_management.pets.model.Pet;
 import com.saarnik.pet.pet_management.pets.repository.PetRepository;
@@ -52,14 +53,14 @@ public class PetService {
         }
     }
 
-    public boolean editPet(PetDto petDto) {
-        if (petDto.getCode() != null && petRepository.findById(petDto.getCode()).isPresent()) {
+    public boolean editPet(EditPetDto editPetDto, long petCode) {
+        if (petRepository.findById(petCode).isPresent()) {
             Pet pet = Pet.builder()
-                    .code(petDto.getCode())
-                    .name(petDto.getName())
-                    .type(petDto.getType())
-                    .furColor(petDto.getFurColor())
-                    .country(petDto.getCountry())
+                    .code(petCode)
+                    .name(editPetDto.getName())
+                    .type(editPetDto.getType())
+                    .furColor(editPetDto.getFurColor())
+                    .country(editPetDto.getCountry())
                     .build();
             try {
                 petRepository.save(pet);
@@ -70,7 +71,7 @@ public class PetService {
                 return false;
             }
         } else {
-            log.info("Bad pet code {}.", petDto.getCode());
+            log.info("Bad pet code {}.", petCode);
             return false;
         }
     }
