@@ -1,4 +1,4 @@
-# Wisercat 2023
+# Wisercat 2023 back-end
 
 Link for the front-end application: [https://github.com/TaanielS/Wisercat-pets-front_end](https://github.com/TaanielS/Wisercat-pets-front_end)\
 The program can be started by running the main method in PetManagementApplication.java.
