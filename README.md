@@ -16,7 +16,7 @@ Dependencies' versions can be found in pom.xml.
 *	~~Values of select lists have to be populated with data from database.~~
 
 ### Optional tasks:
-*	~~User can edit pets.~~ `(Edit pets is currently not available on the website. It's possible via Postman for example.)`
+*	~~User can edit pets.~~
 *	Log in with one of the created user accounts (registration does not have to be implemented).
 *	Create 3 user accounts into the database (username and password). `(back-end branch withUser has this)`
 *	User is not allowed to see other user’s pets.
