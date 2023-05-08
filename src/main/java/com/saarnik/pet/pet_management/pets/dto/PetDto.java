@@ -1,6 +1,5 @@
 package com.saarnik.pet.pet_management.pets.dto;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,16 +12,20 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PetDto {
-    @Id
-    @NotNull(message = "The code is required.")
+    @NotNull
+    @NotBlank
     private Long code;
-    @NotBlank(message = "The name is required.")
+    @NotNull
+    @NotBlank
     private String name;
-    @NotBlank(message = "The type is required.")
+    @NotNull
+    @NotBlank
     private String type;
-    @NotBlank(message = "The fur color is required.")
+    @NotNull
+    @NotBlank
     private String furColor;
-    @NotBlank(message = "The country is required.")
+    @NotNull
+    @NotBlank
     private String country;
 
     public PetDto(long code) {

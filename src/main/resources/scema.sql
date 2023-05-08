@@ -15,3 +15,10 @@ CREATE TABLE options (
   fur_color VARCHAR(50),
   country VARCHAR(50)
 );
+
+CREATE TABLE users (
+  id LONG PRIMARY KEY,
+  username VARCHAR(50),
+  password VARCHAR(50),
+  roles VARCHAR(50)
+);
