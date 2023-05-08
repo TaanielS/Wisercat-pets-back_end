@@ -1,9 +1,12 @@
-Program can be started by running the main method in PetManagementApplication.java.
+# Wisercat 2023
+
+Link for the front-end application: [https://github.com/TaanielS/Wisercat-pets-front_end](https://github.com/TaanielS/Wisercat-pets-front_end)\
+The program can be started by running the main method in PetManagementApplication.java.
 
 Spring boot version - 3.0.6 \
 Dependencies' versions can be found in pom.xml.
 
-Tasks:
+### Tasks:
 *	~~Create a Spring Boot application.~~
 *	~~User is displayed a list of pets that the user has entered (see the provided html).~~
 *	~~User can add pets (see the provided html).~~
@@ -12,7 +15,7 @@ Tasks:
 *	~~Store all input data to database.~~
 *	~~Values of select lists have to be populated with data from database.~~
 
-Optional tasks:
+### Optional tasks:
 *	~~User can edit pets.~~
 *	Log in with one of the created user accounts (registration does not have to be implemented).
 *	Create 3 user accounts into the database (username and password).
@@ -21,7 +24,7 @@ Optional tasks:
 *	~~A pet has a country of origin.~~
 *	~~Validate form fields both inline and in the back-end.~~
 
-Technical requirements:
+### Technical requirements:
 *	~~Application has to run with 1 click or command.~~
 ~~If front- and back-end are in different projects, then 1 click/command per project.~~
 *	~~Use Spring Boot.~~
@@ -32,8 +35,8 @@ Technical requirements:
 *	~~Use latest versions of all used technologies.~~
 *	~~API has to be RESTful.~~
 
-TODO:
+### TODO:
 *   Branch withUser has code to start implementing users. I wanted to use JWT to verify users and allow doing operations on only user's pets (see, modify, add). Pets need to have user id as well.
 
-Thoughts:
-*   I had created REST applications before and recently familiarised myself with Spring Boot so creating a back-end went rather fast. Most of the code was written in one day, later I added data validation, PUT endpoint and an endpoint for select list values. I'd like to make HTTP request responses clearer for the user. 
+### Thoughts:
+*   I had created REST applications before and recently familiarised myself with Spring Boot so creating a back-end went rather fast. Most of the code was written in one day, later I added data validation, PUT endpoint and an endpoint for front-end select list values. I'd like to make HTTP request responses clearer for the user.
