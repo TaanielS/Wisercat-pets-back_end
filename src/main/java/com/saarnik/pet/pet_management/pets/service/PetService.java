@@ -2,6 +2,8 @@ package com.saarnik.pet.pet_management.pets.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,7 @@ public class PetService {
             log.info("Queried all pets.");
             return pets;
         } catch (Exception e) {
-            log.error("Error: {}.", e);
+            log.error("Error: {}.", e.getMessage());
             return new ArrayList<>();
         }
     }
@@ -47,7 +49,30 @@ public class PetService {
             log.info("Pet {} is added to the database.", newPet.getCode());
             return true;
         } catch (Exception e) {
-            log.error("Error: {}.", e);
+            log.error("Error: {}.", e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean editPet(PetDto petDto) {
+        if (petDto.getCode() != null && petRepository.findById(petDto.getCode()).isPresent()) {
+            Pet pet = Pet.builder()
+                    .code(petDto.getCode())
+                    .name(petDto.getName())
+                    .type(petDto.getType())
+                    .furColor(petDto.getFurColor())
+                    .country(petDto.getCountry())
+                    .build();
+            try {
+                petRepository.save(pet);
+                log.info("Modified pet {}.", pet.getCode());
+                return true;
+            } catch (Exception e) {
+                log.error("Error: {}.", e.getMessage());
+                return false;
+            }
+        } else {
+            log.info("Bad pet code {}.", petDto.getCode());
             return false;
         }
     }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -40,6 +41,16 @@ public class PetController {
             return ResponseEntity.status(HttpStatus.CREATED).body("Pet is added.");
         } else {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Constraint conflict.");
+        }
+    }
+
+    @PutMapping("/pets")
+    public ResponseEntity<Pet> editPet(@RequestBody PetDto petDto) {
+        boolean result = petService.editPet(petDto);
+        if (result) {
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
     }
 
