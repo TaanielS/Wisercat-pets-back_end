@@ -39,4 +39,4 @@ Dependencies' versions can be found in pom.xml.
 *   Branch withUser has code to start implementing users. I wanted to use JWT to verify users and allow doing operations on only user's pets (see, modify, add). Pets need to have user id as well.
 
 ### Thoughts:
-*   I had created REST applications before and recently familiarised (during a course and Google) myself with Spring Boot so creating a back-end went smoothly. I spent around 6 hours on it + some tweaking later. I'd like to make HTTP request responses clearer for the user. Also tests for endpoints would be a nice touch.
+*   I had created REST applications before and recently familiarised (during a course and Google) myself with Spring Boot so creating a back-end went smoothly. I spent around 6 hours on it + later some tweaking. I'd like to make HTTP request responses clearer for the user. Also tests for endpoints would be a nice touch.
